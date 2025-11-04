@@ -1,0 +1,7 @@
+Type,StartDate,EndDate,Day,Group,RecurrenceRule,StartTime,EndTime,Event,Location,Color
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 2",Weekly,16:00,18:00,"EE 1 (C)",AN017,red
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 2",Weekly,19:00,21:00,"OS 1 (C)",AN017,cyan
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 2",Even,10:00,12:00,"S: EE 1",AN024,blue
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 2",Weekly,14:00,16:00,"Communication I (S) Patrut B",BN029,green
+
+
