@@ -76,21 +76,33 @@ done < <(
         continue
       fi
 
-     case "$Frequency" in
-        "Weekly")
-            ;; 
-        "Odd")
-            if [ "$TARGET_WEEK_PARITY" -eq 0 ]; then continue; fi
-            ;;
-        "Even")
-            if [ "$TARGET_WEEK_PARITY" -ne 0 ]; then continue; fi
-            ;;
-        *)
-            continue
-            ;;
-        esac
+        
+    RULE_START_WEEK_NUM=$(date -d "$StartDate" +%V)
+    WEEK_DIFF=$((TARGET_WEEK_NUM - RULE_START_WEEK_NUM))
 
-      echo "$Recurrence,$StartDate,$EndDate,$DayOfWeek,$Group,$Frequency,$StartTime,$EndTime,$Event,$Location,$Color"
+    case "$Frequency" in
+      "Weekly")
+          ;; 
+      "Odd")
+          if [ $((WEEK_DIFF % 2)) -ne 0 ]; then
+              :
+          else
+              continue
+          fi
+          ;;
+      "Even")
+          if [ $((WEEK_DIFF % 2)) -eq 0 ]; then
+              :
+          else
+              continue
+          fi
+          ;;
+      *)
+          continue
+          ;;
+    esac
+
+    echo "$Recurrence,$StartDate,$EndDate,$DayOfWeek,$Group,$Frequency,$StartTime,$EndTime,$Event,$Location,$Color"
 
     done
   } | sort -t ',' -k 7,7 -k 8,8

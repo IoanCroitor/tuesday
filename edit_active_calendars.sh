@@ -3,8 +3,8 @@
 edit_active_calendars() {
     while true; do
 
-        local ALL_CALENDARS=()
-        local ACTIVE_CALENDARS=()
+        local -a ALL_CALENDARS=()
+        local -a ACTIVE_CALENDARS=()
 
 
         while IFS= read -r -d '' file; do
@@ -16,13 +16,11 @@ edit_active_calendars() {
             [ -f "$f" ] && ACTIVE_CALENDARS+=("$(basename "$f" .csv)")
         done
 
-        # --- Display Interface ---
         clear
         echo "------ Edit Calendars ------"
         if [ ${#ALL_CALENDARS[@]} -eq 0 ]; then
             echo "No calendars found."
         else
-            # Display each calendar with its status [x] or [ ]
             for i in "${!ALL_CALENDARS[@]}"; do
                 local calendar_name="${ALL_CALENDARS[i]}"
                 local status="[ ]" # Default to inactive
@@ -30,19 +28,20 @@ edit_active_calendars() {
                 if [[ " ${ACTIVE_CALENDARS[*]} " =~ " ${calendar_name} " ]]; then
                     status="[x]"
                 fi
-                # Use printf for clean, aligned formatting
                 printf "%2d. %s %s\n" "$((i + 1))" "$status" "$calendar_name"
             done
         fi
         echo "----------------------------"
 
-        # --- Get User Input ---
-        echo 'Enter number to toggle, or [q/e] to exit: '
+        echo 'Enter number to toggle, [e] to go back or [q] to exit: '
         read -s -n 1 choice
 
-        # --- Process Input ---
         case "$choice" in
-            q|e)
+            q|Q)
+                clear
+                return
+                ;;
+            e|E)
                 source ./main.sh
                 ;;
             *)
