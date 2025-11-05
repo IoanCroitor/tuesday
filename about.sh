@@ -7,7 +7,7 @@ echo "---------------------"
 echo -e "Made with \033[31m♥\033[0m by:"
 echo " - Constantinescu Sonia"
 echo " - Croitor Ioan"
-echo " - x Mario"
+echo " - Citaș Mario"
 echo ""
 
 echo ""

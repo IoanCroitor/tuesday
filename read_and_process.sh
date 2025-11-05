@@ -1,3 +1,4 @@
+
 #!/bin/bash
 
 TARGET_DATE="$1"
@@ -8,12 +9,16 @@ if [ ! -d "$CALENDAR_DIR" ]; then
   exit 1
 fi
 
+# --- FIX 1: Normalize the user's input date to a standard YYYY-MM-DD format ---
+NORMALIZED_TARGET_DATE=$(date -d "$TARGET_DATE" +%F) # %F is a shorthand for %Y-%m-%d
+
+# These variables are still needed for the Recurrent event logic
 TARGET_EPOCH=$(date -d "$TARGET_DATE 12:00:00" +%s)
 TARGET_DOW=$(date -d "$TARGET_DATE" +%A)
 TARGET_WEEK_NUM=$(date -d "$TARGET_DATE" +%V)
-TARGET_WEEK_PARITY=$((TARGET_WEEK_NUM % 2))
 TARGET_DAY_OF_MONTH=$(date -d "$TARGET_DATE" +%d)
 
+# (The declaration of arrays remains the same)
 declare -a Recurrences=()
 declare -a StartDates=()
 declare -a EndDates=()
@@ -51,13 +56,19 @@ done < <(
         continue
       fi
 
+      # --- FIX 2: Apply the robust date comparison to Single events ---
       if [ "$Recurrence" != "Recurrent" ]; then
-        if [ "$StartDate" == "$TARGET_DATE" ]; then
+        # Normalize the event's date from the file to YYYY-MM-DD
+        EVENT_DATE_NORMALIZED=$(date -d "$StartDate" +%F)
+        
+        # Now compare the two normalized dates
+        if [ "$EVENT_DATE_NORMALIZED" == "$NORMALIZED_TARGET_DATE" ]; then
           echo "$Recurrence,$StartDate,$EndDate,$DayOfWeek,$Group,$Frequency,$StartTime,$EndTime,$Event,$Location,$Color"
         fi
-        continue
+        continue # Move to the next line in the file
       fi
 
+      # The rest of the logic for Recurrent events remains unchanged
       RULE_START_EPOCH=$(date -d "$StartDate 00:00:00" +%s)
       RULE_END_EPOCH=$(date -d "$EndDate 23:59:59" +%s)
       if [ "$TARGET_EPOCH" -lt "$RULE_START_EPOCH" ] || [ "$TARGET_EPOCH" -gt "$RULE_END_EPOCH" ]; then
@@ -75,7 +86,6 @@ done < <(
       if [ "$TARGET_DOW" != "$DayOfWeek" ]; then
         continue
       fi
-
         
     RULE_START_WEEK_NUM=$(date -d "$StartDate" +%V)
     WEEK_DIFF=$((TARGET_WEEK_NUM - RULE_START_WEEK_NUM))

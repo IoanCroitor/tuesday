@@ -1,0 +1,3 @@
+Type,StartDate,EndDate,Day,Group,RecurrenceRule,StartTime,EndTime,Event,Location,Color
+Single,2025-11-05,2025-11-05,Wednesday,Personal,None,22:20,24:00,"Study for chemistry",Home,yellow
+Single,2025-11-09,2025-11-09,Sunday,Personal,None,20:00,24:00,"Midterm Studying",Home,orange

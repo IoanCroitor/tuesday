@@ -22,6 +22,11 @@ get_colored_string() {
         "lightcyan")     color_code="1;36" ;;
         "lightgray")     color_code="0;37" ;;
         "white")         color_code="1;37" ;;
+        "pink")          color_code="38;5;206" ;;
+        "violet")        color_code="38;5;171" ;;
+        "teal")          color_code="38;5;43" ;;
+        "lime")          color_code="38;5;154" ;;
+        "magenta")       color_code="38;5;201" ;;
         *)               color_code="0" ;;
     esac
 

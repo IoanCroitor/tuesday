@@ -1,0 +1,18 @@
+Type,StartDate,EndDate,Day,Group,RecurrenceRule,StartTime,EndTime,Event,Location,Color
+Recurrent,2025-10-06,2025-12-15,Monday,"1211EA sgr 2",Even,08:00,10:00,"CAG (L)","BN306B",lightblue
+Recurrent,2025-10-06,2025-12-15,Monday,"1211EA sgr 2",Odd,10:00,12:00,"Chemestry (S)","CB020",violet
+Recurrent,2025-10-06,2025-12-15,Monday,"1211EA sgr 2",Weekly,12:00,14:00,"Physical Education I (L)",Sports Hall,lime
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 2",Even,10:00,12:00,"EE 1 (S)",AN017,lightred
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 2",Weekly,14:00,16:00,"Communication I (S) Patrut B",BN029,lightgreen
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 2",Weekly,16:00,18:00,"S: EE 1",AN024,blue
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 2",Weekly,19:00,21:00,"OS 1 (C)",AN017,cyan
+Recurrent,2025-10-09,2025-12-18,Thursday,"1211EA sgr 2",Weekly,08:00,10:00,"Linear Algebra (C) PITEA Ariana",AN024,red
+Recurrent,2025-10-09,2025-12-18,Thursday,"1211EA sgr 2",Weekly,10:00,12:00,"Calculus I (C) OLTEANU Mircea",AN024,blue
+Recurrent,2025-10-09,2025-12-18,Thursday,"1211EA sgr 2",Odd,12:00,14:00,"Chemistry (C) RAU Ileana",AN015,green
+Recurrent,2025-10-09,2025-12-18,Thursday,"1211EA sgr 2",Even,14:00,16:00,"CAG (C) RADUICA Felix",AN015,pink
+Recurrent,2025-10-09,2025-12-18,Thursday,"1211EA sgr 2",Even,16:00,18:00,"Programming Languages",AN015,magenta
+Recurrent,2025-10-09,2025-12-18,Wednesday,"1211EA sgr 2",Weekly,12:00,14:00,"PL (L)",JA001,purple
+Recurrent,2025-10-09,2025-12-18,Wednesday,"1211EA sgr 2",Weekly,14:00,16:00,"LA (S)",AN029,lightpurple
+Recurrent,2025-10-09,2025-12-18,Wednesday,"1211EA sgr 2",Weekly,19:00,21:00,"OS 1 (L)",JA001A,darkgray
+Recurrent,2025-10-10,2025-12-19,Friday,"1211EA sgr 2",Weekly,08:00,10:00,"Calculus (S)",CB105,teal
+Recurrent,2025-10-10,2025-12-19,Friday,"1211EA sgr 2",Weekly,15:00,17:00,"OS 1 (L)",CJ07,orange

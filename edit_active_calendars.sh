@@ -38,8 +38,8 @@ edit_active_calendars() {
 
         case "$choice" in
             q|Q)
-                clear
-                return
+                echo "Exiting, see you next time!"
+                exit 0
                 ;;
             e|E)
                 source ./main.sh

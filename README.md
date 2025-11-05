@@ -54,3 +54,23 @@ Type,StartDate,EndDate,Day,Group,RecurrenceRule,StartTime,EndTime,Event,Location
 
 ## Made with love by:
 - 12111EA 
+
+
+
+Type,StartDate,EndDate,Day,Group,RecurrenceRule,StartTime,EndTime,Event,Location,Color
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 1",EvenWeeks,10:00,12:00,"S: EE 1",AN024,Blue
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 1",Weekly,14:00,16:00,"Communication I (S) Patrut B",BN029,Green
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 1",Weekly,16:00,18:00,"EE 1 (C)",AN017,Red
+Recurrent,2025-10-07,2025-12-19,Tuesday,"1211EA sgr 1",Weekly,19:00,21:00,"OS 1 (C)",AN017,Purple
+
+
+
+Type,StartDate,EndDate,Day,Group,RecurrenceRule,StartTime,EndTime,Event,Location,Color
+Recurrent,2025-10-06,2025-12-15,Monday,"1211EA sgr 1",Weekly,08:00,10:00,"CAG (L)",BN308,cyan
+Recurrent,2025-10-06,2025-12-15,Monday,"1211EA sgr 1",Weekly,10:00,12:00,"Chemistry (S)",(unspecified),orange
+Recurrent,2025-10-06,2025-12-15,Monday,"1211EA sgr 1",Weekly,12:00,14:00,"Physical Education I (L)",Sports Hall,green
+
+
+
+
+
