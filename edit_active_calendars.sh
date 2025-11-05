@@ -1,0 +1,71 @@
+#!/bin/bash
+
+edit_active_calendars() {
+    while true; do
+
+        local ALL_CALENDARS=()
+        local ACTIVE_CALENDARS=()
+
+
+        while IFS= read -r -d '' file; do
+            ALL_CALENDARS+=("$(basename "$file" .csv)")
+        done < <(find ./calendars/ -name "*.csv" -print0 | sort -z | uniq -z)
+        
+      
+        for f in ./calendars/active/*.csv; do
+            [ -f "$f" ] && ACTIVE_CALENDARS+=("$(basename "$f" .csv)")
+        done
+
+        # --- Display Interface ---
+        clear
+        echo "------ Edit Calendars ------"
+        if [ ${#ALL_CALENDARS[@]} -eq 0 ]; then
+            echo "No calendars found."
+        else
+            # Display each calendar with its status [x] or [ ]
+            for i in "${!ALL_CALENDARS[@]}"; do
+                local calendar_name="${ALL_CALENDARS[i]}"
+                local status="[ ]" # Default to inactive
+
+                if [[ " ${ACTIVE_CALENDARS[*]} " =~ " ${calendar_name} " ]]; then
+                    status="[x]"
+                fi
+                # Use printf for clean, aligned formatting
+                printf "%2d. %s %s\n" "$((i + 1))" "$status" "$calendar_name"
+            done
+        fi
+        echo "----------------------------"
+
+        # --- Get User Input ---
+        echo 'Enter number to toggle, or [q/e] to exit: '
+        read -s -n 1 choice
+
+        # --- Process Input ---
+        case "$choice" in
+            q|e)
+                source ./main.sh
+                ;;
+            *)
+                if ! [[ "$choice" =~ ^[0-9]+$ ]] || [ "$choice" -lt 1 ] || [ "$choice" -gt "${#ALL_CALENDARS[@]}" ]; then
+                    echo "Invalid input: '$choice'. Please try again."
+                    sleep 2 
+                    continue 
+                fi
+
+                local index=$((choice - 1))
+                local calendar_to_toggle="${ALL_CALENDARS[index]}"
+
+                if [[ " ${ACTIVE_CALENDARS[*]} " =~ " ${calendar_to_toggle} " ]]; then
+                    mv "./calendars/active/${calendar_to_toggle}.csv" "./calendars/inactive/"
+                    
+                else
+                    mv "./calendars/inactive/${calendar_to_toggle}.csv" "./calendars/active/"
+                    
+                fi
+                ;;
+        esac
+    done
+}
+
+
+edit_active_calendars
